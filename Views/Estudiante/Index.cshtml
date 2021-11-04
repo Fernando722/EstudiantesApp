@@ -1,0 +1,41 @@
+﻿@model List<EsrudiantesApp.Models.Estudiante>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    <a href="@Url.Action("Nuevo","Estudiante")" class="btn btn-success" style="float:right">Nuevo</a>
+    Listado de Estudiantes</h2>
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Cursos</th>
+            <th>Intereses</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var estudiante in Model)
+        {
+            <tr>
+                <td>@estudiante.Id</td>
+                <td>@estudiante.Nombres</td>
+                <td>@estudiante.Apellidos</td>
+                <td>@estudiante.Cursos</td>
+                <td>@estudiante.Intereses</td>
+                <td>
+                    <a href="@Url.Action("Actualizar","Estudiante", new { id = estudiante.Id })" class="btn btn-primary">Actualizar</a>
+                    <a href="@Url.Action("Eliminar","Estudiante", new { id = estudiante.Id })" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

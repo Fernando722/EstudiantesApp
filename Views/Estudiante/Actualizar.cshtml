@@ -1,0 +1,35 @@
+﻿@model EsrudiantesApp.Models.Estudiante
+@{
+    ViewBag.Title = "Actualizar";
+}
+
+<h2>Actualizar Estudiante</h2>
+<hr />
+
+<form action="@Url.Action("Actualizar","Estudiante")" method="post">
+    <div class="form-group">
+        <label>Id</label>
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @required = "required" })
+    </div>
+    <div class="form-group">
+        <label>Nombres</label>
+        @Html.TextBoxFor(x => x.Nombres, new { @class = "form-control", @required = "required" })
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+        @Html.TextBoxFor(x => x.Apellidos, new { @class = "form-control", @required = "required" })
+    </div>
+    <div class="form-group">
+        <label>Cursos</label>
+        @Html.TextBoxFor(x => x.Cursos, new { @class = "form-control", @required = "required" })
+    </div>
+    <div class="form-group">
+        <label>Intereses</label>
+        @Html.TextBoxFor(x => x.Intereses, new { @class = "form-control", @required = "required" })
+    </div>
+    <div>
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <a href="@Url.Action("Index","Estudiante")" class="btn btn-danger">Regresar</a>
+    </div>
+</form>
+
