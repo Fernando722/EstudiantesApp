@@ -1,11 +1,11 @@
-﻿using EsrudiantesApp.Models;
+﻿using EstudiantesApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EsrudiantesApp.Controllers
+namespace EstudiantesApp.Controllers
 {
     public class EstudianteController : Controller
     {
@@ -22,7 +22,7 @@ namespace EsrudiantesApp.Controllers
             }
             else
             {
-                var listadoEstudiantes = (List<Estudiante>)Session[nombreSesion];
+                var listadoEstudiantes = (System.Collections.Generic.List<Estudiante>)Session[nombreSesion];
 
                 return View(listadoEstudiantes.OrderBy(x => x.Id).ToList());
             }
@@ -39,7 +39,7 @@ namespace EsrudiantesApp.Controllers
         [HttpPost]
         public ActionResult Nuevo(Estudiante estudiante)
         {
-            var listadoEstudiantes = (List<Estudiante>)Session[nombreSesion];
+            var listadoEstudiantes = (System.Collections.Generic.List<Estudiante>)Session[nombreSesion];
             listadoEstudiantes.Add(estudiante);
             Session[nombreSesion] = listadoEstudiantes;
             return RedirectToAction("Index");
@@ -47,7 +47,7 @@ namespace EsrudiantesApp.Controllers
 
         private List<Estudiante> ObtenerEstudiante()
         {
-            var listado = new List<Estudiante>();
+            var listado = new System.Collections.Generic.List<Estudiante>();
             listado.Add(new Estudiante { Id = 1, Nombres = "Abigail", Apellidos = "Fernandez", Cursos = "Aleman", Intereses = "Ingenieria" });
             listado.Add(new Estudiante { Id = 2, Nombres = "Martin", Apellidos = "Fernandez", Cursos = "Programacion", Intereses = "Tecnologia" });
             listado.Add(new Estudiante { Id = 3, Nombres = "Yeraldin", Apellidos = "Guzman", Cursos = "Ingles", Intereses = "Viajes" });
@@ -60,14 +60,14 @@ namespace EsrudiantesApp.Controllers
         [HttpGet]
         public ActionResult Actualizar(int id)
         {
-            var listadoEstudiantes = (List<Estudiante>)Session[nombreSesion];
+            var listadoEstudiantes = (System.Collections.Generic.List<Estudiante>)Session[nombreSesion];
             var estudiante = listadoEstudiantes.FirstOrDefault(x => x.Id == id);
             return View(estudiante);
         }
         [HttpPost]
         public ActionResult Actualizar(Estudiante estudiante)
         {
-            var listadoEstudiantes = (List<Estudiante>)Session[nombreSesion];
+            var listadoEstudiantes = (System.Collections.Generic.List<Estudiante>)Session[nombreSesion];
             var estudianteActualizar = listadoEstudiantes.FirstOrDefault(x => x.Id == estudiante.Id);
             listadoEstudiantes.Remove(estudianteActualizar);
             listadoEstudiantes.Add(estudiante);
@@ -77,7 +77,7 @@ namespace EsrudiantesApp.Controllers
 
         public ActionResult Eliminar (int id)
         {
-            var listadoEstudiantes = (List<Estudiante>)Session[nombreSesion];
+            var listadoEstudiantes = (System.Collections.Generic.List<Estudiante>)Session[nombreSesion];
             var estudianteEliminar = listadoEstudiantes.FirstOrDefault(x => x.Id == id);
             listadoEstudiantes.Remove(estudianteEliminar);
 
